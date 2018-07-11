@@ -12,7 +12,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        boolean isLogin = request.getAttribute(SessionKey.USER_KEY) != null;
+        boolean isLogin = request.getSession().getAttribute(SessionKey.USER_KEY) != null;
         if (!isLogin) {
             response.sendRedirect(Url.LOGIN);
         }

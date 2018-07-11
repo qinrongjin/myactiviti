@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<UserDTO> getUsers(PageDTO pageDTO) {
-        List<User> users = processEngine.getIdentityService().createUserQuery().orderByUserEmail().listPage(pageDTO.getOffset(), pageDTO.getPageSize());
+        List<User> users = processEngine.getIdentityService().createUserQuery().orderByUserEmail().asc().listPage(pageDTO.getOffset(), pageDTO.getPageSize());
         return QBeanUtils.getConvertedBean(users, UserDTO.class, (o1, o2)->{
             o1.setUsername(o2.getEmail());
             o1.setId(o2.getId());
@@ -46,7 +46,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public void postUser(UserDTO userDTO) {
         User user = new UserEntity();
-
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
+        user.setEmail(userDTO.getUsername());
+        user.setPassword(userDTO.getPassword());
         processEngine.getIdentityService().saveUser(user);
     }
 }
