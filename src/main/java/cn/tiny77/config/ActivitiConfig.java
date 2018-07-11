@@ -4,8 +4,10 @@ import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration;
 import org.activiti.spring.ProcessEngineFactoryBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
+@Configuration
 @Component
 public class ActivitiConfig {
 

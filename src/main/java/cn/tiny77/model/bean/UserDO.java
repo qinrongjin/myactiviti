@@ -11,6 +11,8 @@ public class UserDO {
 
     private String password;
 
-    private String name;
+    private String firstName;
+
+    private String lastName;
 
 }

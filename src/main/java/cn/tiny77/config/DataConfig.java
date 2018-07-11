@@ -4,9 +4,10 @@ import cn.tiny77.model.bean.UserDO;
 import cn.tiny77.model.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-@Component
+@Configuration
 public class DataConfig {
 
     @Bean(name = "root", autowire = Autowire.BY_NAME)
