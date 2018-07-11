@@ -15,7 +15,8 @@ public class DataConfig {
         UserDTO userDTO = new UserDTO();
         userDTO.setId("0");
         userDTO.setUsername("root");
-        userDTO.setName("root");
+        userDTO.setFirstName("root");
+        userDTO.setLastName("os");
         userDTO.setPassword("root");
         return userDTO;
     }

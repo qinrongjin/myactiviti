@@ -7,6 +7,7 @@ import cn.tiny77.util.QBeanUtils;
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.identity.User;
+import org.activiti.engine.impl.persistence.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +41,12 @@ public class UserServiceImpl implements UserService{
             o1.setUsername(o2.getEmail());
             o1.setId(o2.getId());
         });
+    }
+
+    @Override
+    public void postUser(UserDTO userDTO) {
+        User user = new UserEntity();
+
+        processEngine.getIdentityService().saveUser(user);
     }
 }

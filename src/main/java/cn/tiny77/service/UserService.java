@@ -9,4 +9,6 @@ public interface UserService {
     UserDTO checkLogin(UserDTO user);
 
     List<UserDTO> getUsers(PageDTO pageDTO);
+
+    void postUser(UserDTO userDTO);
 }

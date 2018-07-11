@@ -1,6 +1,7 @@
 package cn.tiny77.controller;
 
 import cn.tiny77.constant.SessionKey;
+import cn.tiny77.constant.Url;
 import cn.tiny77.model.dto.PageDTO;
 import cn.tiny77.model.dto.UserDTO;
 import cn.tiny77.model.vo.UserVO;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -59,6 +62,16 @@ public class UserController {
         List<UserVO> users = QBeanUtils.getConvertedBean(userDTOS, UserVO.class);
         model.addAttribute("users", users);
         return "user/list";
+    }
+
+    @PostMapping("/user")
+    public void user(UserDTO userDTO, HttpServletResponse response){
+        try {
+            userService.postUser(userDTO);
+            response.sendRedirect(Url.USER_LIST);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
